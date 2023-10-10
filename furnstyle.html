@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FurnStyle - Your Furniture Destination</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">FurnStyle</div>
+            <ul class="nav-links">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Products</a></li>
+                <li><a href="#">About Us</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis in dolore expedita pariatur aliquid! Dolorem minus quibusdam qui? Perferendis quod cupiditate magni dignissimos cum tenetur reprehenderit tempore deserunt id, ex inventore totam non in dolor perspiciatis itaque eius asperiores sed, optio praesentium dolorum nulla exercitationem! Architecto blanditiis nulla cum voluptatibus quasi aspernatur fugit recusandae ea perferendis, maiores, vel aut sint perspiciatis, laboriosam totam adipisci fugiat quibusdam. Veniam omnis nobis, soluta praesentium quis nostrum non modi alias aut! Voluptate dignissimos cupiditate numquam ad quibusdam temporibus. Porro corrupti sunt, provident culpa odio expedita harum asperiores fugiat et quia atque quaerat aliquid minus.
+        <br><br><button>shop now</button>
+    </section>
+    <main><main>
+        <div class="product-container" id="product-container">
+            <!-- Product cards will be added here dynamically -->
+            <div class="product-card">
+                <h2 class="product-name">Elegant Sofa</h2>
+                <img src="lom.jpg" alt="Elegant Sofa" class="product-image">
+                <p class="product-price">$599.99</p>
+            </div>
+            <!-- Add more product cards here -->
+        </div>
+    </main>
+    
+    </main>
+    <script>
+      
+function toggleNav() {
+    const navLinks = document.querySelector('.nav-links');
+    navLinks.classList.toggle('active');
+}
+
+
+const menuIcon = document.querySelector('.menu-icon');
+menuIcon.addEventListener('click', toggleNav);
+
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+
+        const targetId = this.getAttribute('href').substring(1);
+        const targetElement = document.getElementById(targetId);
+
+        if (targetElement) {
+            window.scrollTo({
+                top: targetElement.offsetTop,
+                behavior: 'smooth'
+            });
+
+            // Close the navigation menu on mobile
+            const navLinks = document.querySelector('.nav-links');
+            navLinks.classList.remove('active');
+        }
+    });
+});
+
+// Add animations to product listings
+const productCards = document.querySelectorAll('.product-card');
+
+productCards.forEach((card, index) => {
+    card.style.transitionDelay = `${index * 100}ms`;
+    card.classList.add('slide-in');
+});
+// Function to create a product card
+function createProductCard(product) {
+    const productContainer = document.getElementById('product-container');
+    
+    const productCard = document.createElement('div');
+    productCard.classList.add('product-card');
+
+    const productName = document.createElement('h2');
+    productName.textContent = product.name;
+
+    const productImage = document.createElement('img');
+    productImage.src = product.imageSrc;
+    productImage.alt = product.name;
+
+    const productPrice = document.createElement('p');
+    productPrice.textContent = `Price: $${product.price}`;
+
+    productCard.appendChild(productName);
+    productCard.appendChild(productImage);
+    productCard.appendChild(productPrice);
+
+    productContainer.appendChild(productCard);
+
+    // Add animation to the newly created product card
+    setTimeout(() => {
+        productCard.classList.add('slide-in');
+    }, 100);
+}
+
+// Sample product data (replace with your actual product data)
+const products = [
+    {
+        name: 'Elegant Sofa',
+        imageSrc: 'sofa.jpg',
+        price: 599.99
+    },
+    {
+        name: 'Modern Coffee Table',
+        imageSrc: 'coffee-table.jpg',
+        price: 199.99
+    },
+    // Add more product objects as needed
+];
+
+// Create and display product cards
+products.forEach(product => {
+    createProductCard(product);
+});
+// JavaScript for highlighting the current page link
+
+// Get the current page's URL
+const currentPageUrl = window.location.href;
+
+// Get all navigation links
+const navLinks = document.querySelectorAll('.nav-links a');
+
+// Iterate through each link and check if its href matches the current page URL
+navLinks.forEach(link => {
+    if (link.href === currentPageUrl) {
+        link.classList.add('current-page'); // Add a class to highlight the current page link
+    }
+});
+
+
+    </script>
+
+    <footer>
+        <p>&copy; 2023 FurnStyle. All rights reserved.</p>
+    </footer>
+
+    <script src="scripts.js"></script>
+</body>
+</html>
+
